@@ -1,4 +1,4 @@
-test: dev
+test: dev1
 
 spring:
   http:
@@ -59,3 +59,19 @@ hystrix:
 
 logging:
   level: debug
+
+
+
+#RabbitMq
+ # rabbitmq:
+    #name: rabbitmq-hello
+    #host: 'http://111.230.154.185'
+    #port: 5672
+    #addresses: 111.230.154.185:5672
+    #username: shanbing
+   # password: 123456
+    #publisher-confirms: true    #消息回调
+    #virtual-host: /
+    #exchange: ${dev.spring.rabbitmq.exchange}
+    #routingkey: ${dev.spring.rabbitmq.routingkey}
+    #queue: ${dev.spring.rabbitmq.queue}
