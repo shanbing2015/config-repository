@@ -1,0 +1,30 @@
+version: "3"
+services:
+  redis-master:
+    image: docker.io/redis
+    container_name: redis-master
+    ports:
+      - 6379:6379
+    volumes:
+      - /root/redis/conf:/conf
+      - /root/redis/data:/data
+  redis-slave:
+    image: docker.io/redis
+    command: redis-server --slaveof redis 6379
+    restart: always
+    links:
+      - redis-master
+  sentinel:
+    build: sentinel
+    environment:
+      - SENTINEL_DOWN_AFTER=5000
+      - SENTINEL_FAILOVER=5000
+    links:
+      - redis-master
+      - redis-slave
+
+
+
+
+
+
